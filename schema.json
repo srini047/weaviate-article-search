@@ -1,0 +1,24 @@
+{
+    "classes": [
+        {
+            "class": "Article",
+            "properties": [
+                {
+                    "name": "category",
+                    "dataType": ["text"],
+                    "description": "article category"
+                },
+                {
+                    "name": "heading",
+                    "dataType": ["text"],
+                    "description": "article title"
+                },
+                {
+                    "name": "article",
+                    "dataType": ["text"],
+                    "description": "article content"
+                }
+            ]
+        }
+    ]
+}
