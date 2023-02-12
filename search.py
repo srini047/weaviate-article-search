@@ -10,14 +10,26 @@ client = weaviate.Client(
     })
 
 # Returns 'n' random objects
-# result = client.query.get("Article", ["heading", "category"]).with_limit(n).do()
+# result = client.query.get("Article", ["heading", "category"]).with_limit(5).do()
 
-# Using near text search - error message
-nearText = {"concepts": ["vector search engine"]}
+# Using near text search - works fine
+nearText = {
+  "concepts": ["fashion"],
+  "distance": 0.6, # prior to v1.14 use "certainty" instead of "distance"
+  "moveAwayFrom": {
+    "concepts": ["finance"],
+    "force": 0.45
+  },
+  "moveTo": {
+    "concepts": ["sport"],
+    "force": 0.85
+  }
+}
 
 result = (
     client.query
     .get("Article", ["category", "heading"])
+    .with_additional(["distance"])
     .with_near_text(nearText)
     .do()
 )

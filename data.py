@@ -12,6 +12,7 @@ schema = {
     "classes": [
         {
             "class": "Article",
+            "vectorizer": "text2vec-cohere",
             "properties": [
                 {
                     "name": "category",
