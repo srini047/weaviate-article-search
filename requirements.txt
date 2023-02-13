@@ -1,5 +1,5 @@
 weaviate-client
-json
+# json
 pandas
 streamlit
 os
