@@ -3,4 +3,4 @@ weaviate-client
 pandas
 streamlit
 # os
-dotenv
+# dotenv
