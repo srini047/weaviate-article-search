@@ -2,5 +2,5 @@ weaviate-client
 # json
 pandas
 streamlit
-os
+# os
 dotenv
