@@ -1,13 +1,20 @@
+import time
 import streamlit as st
 
-st.title('Weaviate Artcile Vector Search Engine')
+st.set_page_config(
+    page_title="Home",
+    page_icon="🏠",
+    layout="wide"
+)
+
+with st.spinner('Loading App 🌀'):
+    time.sleep(1)
+
+st.balloons()
+
+st.title('Weaviate Article Vector Search Engine')
 st.header('Made use of Weaviate + Streamlit for searching the articles data gathered from Kaggle')
 
-with st.sidebar:
-    add_radio = st.radio(
-        "Choose searching method",
-        ("Get `n` random objects", "Using near-text search",
-         "Using vector search", "Using bm25", "Using metadata with aggregate"),
-    )
+st.sidebar.success("Select any of the above search...")
 
 
