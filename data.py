@@ -1,12 +1,5 @@
-import weaviate
 import pandas as pd
-
-client = weaviate.Client(
-    url="https://article-recommender.weaviate.network/",  # Replace with your endpoint
-    additional_headers={
-        "X-Cohere-Api-Key": "8bwgk1enPcRPjW7TlmsAwgyjKWPZJyRZNSUDFbWb"  # Replace with your API key
-    }
-)
+from client import Client
 
 schema = {
     "classes": [
@@ -34,7 +27,7 @@ schema = {
     ]
 }
 
-client.batch.configure(
+Client.batch.configure(
   batch_size=10, 
   # dynamically update the `batch_size` based on import speed
   dynamic=True,
@@ -53,7 +46,7 @@ for i in range (0,len(data)):
     }
 
     try:
-        client.batch.add_data_object(article_object, 'Article')
+        Client.batch.add_data_object(article_object, 'Article')
     except BaseException as error:
         print("Import Failed at: ",i)
         print("An exception occurred: {}".format(error))
@@ -62,5 +55,5 @@ for i in range (0,len(data)):
 
     print("Status: ", str(i)+"/"+str(len(data)-1))
 
-client.batch.flush()
+Client.batch.flush()
 print('Job done...')

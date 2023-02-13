@@ -1,10 +1,10 @@
 import weaviate
-import json
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 Client = weaviate.Client(
-    url=
-    "https://article-recommender.weaviate.network/",  # Replace with your endpoint
+    url=os.environ.get("WEAVIATE_URL"),  # Replace with your endpoint
     additional_headers={
-        "X-Cohere-Api-Key":
-        "8bwgk1enPcRPjW7TlmsAwgyjKWPZJyRZNSUDFbWb"  # Replace with your API key
+        "X-Cohere-Api-Key":os.environ.get("COHERE_API_KEY")  # Replace with your API key
     })

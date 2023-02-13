@@ -1,14 +1,7 @@
-import weaviate
 import json
+from client import Client
 
-client = weaviate.Client(
-    url="https://article-recommender.weaviate.network/",  # Replace with your endpoint
-    additional_headers={
-        "X-Cohere-Api-Key": "8bwgk1enPcRPjW7TlmsAwgyjKWPZJyRZNSUDFbWb"  # Replace with your API key
-    }
-)
-
-client.schema.delete_all()
+Client.schema.delete_all()
 schema = {
     "classes": [
         {
@@ -36,10 +29,10 @@ schema = {
 }
 
 # create the schema
-client.schema.create(schema)
+Client.schema.create(schema)
 
 # get the schema
-schema = client.schema.get()
+schema = Client.schema.get()
 
 # print the schema
 print(json.dumps(schema, indent=4))

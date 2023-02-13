@@ -2,3 +2,5 @@ weaviate
 json
 pandas
 streamlit
+os
+dotenv
